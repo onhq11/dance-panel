@@ -1,6 +1,6 @@
 {
   "name": "@prettylab/design",
-  "version": "0.0.1-dev_1744383663648",
+  "version": "0.0.1-dev-1744384744931",
   "description": "Design components for NextJS + MaterialUI stack",
   "author": "onhq11",
   "homepage": "https://github.com/prettylab/design#readme",
@@ -27,6 +27,7 @@
     "@storybook/react-vite": "^8.6.12",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.2",
+    "prettier": "^3.5.3",
     "storybook": "^8.6.12",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3"
@@ -38,6 +39,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^7.0.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-icons": "^5.5.0"
   }
 }
