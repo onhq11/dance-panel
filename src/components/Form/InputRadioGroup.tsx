@@ -8,7 +8,7 @@ import {
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import { Controller, useFormContext } from "react-hook-form";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
 
 type Props = {
   name: string;

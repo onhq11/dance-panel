@@ -5,11 +5,11 @@ import {
   CircularProgressProps,
   SxProps,
 } from "@mui/material";
-import { useState } from "react";
-import Flex, { FlexProps } from "../Flex/Flex";
-import { ImgProps } from "../Img";
+import { useEffect, useState } from "react";
+import Flex, { FlexProps } from "../../layout/Flex/Flex";
 import NoImage, { NoImageProps } from "../NoImage/NoImage";
-import Img from "../Img/Img";
+import Img, { ImgProps } from "../Img/Img";
+import isClient from "../../../utils/ssr/isClient";
 
 export interface LazyLoadImageProps {
   src: string;
@@ -45,6 +45,21 @@ export default function LazyLoadImage({
 }: LazyLoadImageProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (isClient() && src) {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        setLoading(false);
+        setError(false);
+      };
+      img.onerror = () => {
+        setError(true);
+        setLoading(false);
+      };
+    }
+  }, [src]);
 
   const endLoading = (loading: boolean, error: boolean) => {
     if (!forceLoading) {

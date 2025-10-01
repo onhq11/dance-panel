@@ -1,4 +1,4 @@
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
 import InputRadioGroup from "@/components/Form/InputRadioGroup";
 import { ageGroups } from "@/assets/data/ageGroup";
 import Field from "@/app/(register)/_components/Content/Form/Field";

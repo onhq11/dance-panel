@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
 
 type Props = {
   children: ReactNode;

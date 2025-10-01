@@ -1,7 +1,7 @@
-import { Box } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 import { ReactNode } from "react";
 
-interface Props {
+export interface FlexProps extends BoxProps {
   children?: ReactNode;
   wrap?: boolean;
   alignStart?: boolean;
@@ -11,7 +11,7 @@ interface Props {
   center?: boolean;
   end?: boolean;
   column?: boolean;
-  [key: string]: any;
+  sx?: any;
 }
 
 export default function Flex({
@@ -24,8 +24,9 @@ export default function Flex({
   center,
   end,
   column,
+  sx,
   ...props
-}: Props) {
+}: FlexProps) {
   const additionalSx = {
     ...(wrap && { flexWrap: "wrap" }),
     ...(alignStart && { alignItems: "flex-start" }),
@@ -38,7 +39,7 @@ export default function Flex({
   };
 
   return (
-    <Box {...props} sx={{ display: "flex", ...additionalSx, ...props.sx }}>
+    <Box sx={{ display: "flex", ...additionalSx, ...sx }} {...props}>
       {children}
     </Box>
   );

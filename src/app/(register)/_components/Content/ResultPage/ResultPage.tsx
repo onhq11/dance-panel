@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 import { registrationType } from "@/assets/data/registrationType";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
 import Button from "@/components/Layout/Button";
-import SlideIn from "@/components/Layout/SlideIn";
+import SlideIn from "@/prettylab/core/src/components/animation/SlideIn/SlideIn";
 
 type Props = {
   type: string;

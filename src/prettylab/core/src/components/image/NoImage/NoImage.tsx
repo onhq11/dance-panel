@@ -1,7 +1,7 @@
-import { SxProps, TypographyProps } from "@mui/material";
+import { TypographyProps } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import { MdOutlineInsertPhoto } from "react-icons/md";
-import Flex, { FlexProps } from "../Flex/Flex";
+import Flex, { FlexProps } from "../../layout/Flex/Flex";
 import { IconBaseProps } from "react-icons";
 
 export interface NoImageProps {
@@ -15,21 +15,7 @@ export interface NoImageSlotProps {
   typography?: TypographyProps;
 }
 
-const defaultSlotProps = {
-  icon: {
-    size: 40,
-  },
-  typography: {
-    sx: {
-      fontSize: 14,
-    },
-  },
-};
-
-export default function NoImage({
-  label,
-  slotProps = defaultSlotProps,
-}: NoImageProps) {
+export default function NoImage({ label, slotProps }: NoImageProps) {
   return (
     <Flex
       center
@@ -38,11 +24,15 @@ export default function NoImage({
       {...slotProps?.container}
       sx={{ opacity: 0.6, height: "100%", ...slotProps?.container?.sx }}
     >
-      <MdOutlineInsertPhoto {...slotProps?.icon} />
+      <MdOutlineInsertPhoto size={40} {...slotProps?.icon} />
       {label && (
         <Typography
           {...slotProps?.typography}
-          sx={{ whiteSpace: "nowrap", ...slotProps?.typography?.sx }}
+          sx={{
+            whiteSpace: "nowrap",
+            fontSize: 14,
+            ...slotProps?.typography?.sx,
+          }}
         >
           {label}
         </Typography>

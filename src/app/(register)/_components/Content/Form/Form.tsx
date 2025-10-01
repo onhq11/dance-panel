@@ -1,7 +1,7 @@
 "use client";
 
 import { FormProvider, useForm } from "react-hook-form";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
 import InputSelect from "@/components/Form/InputSelect";
 import {
   matchRegistrationTypeName,
@@ -12,7 +12,7 @@ import VariantResolver from "@/app/(register)/_components/Content/Form/Variants/
 import { useState } from "react";
 import Button from "@/components/Layout/Button";
 import ResultPage from "@/app/(register)/_components/Content/ResultPage/ResultPage";
-import SlideIn from "@/components/Layout/SlideIn";
+import SlideIn from "@/prettylab/core/src/components/animation/SlideIn/SlideIn";
 
 export default function Form() {
   const form = useForm();

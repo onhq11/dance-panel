@@ -1,7 +1,7 @@
 import { IconButtonProps } from "@mui/material";
-import IconButton from "@/components/Layout/IconButton";
+import IconButton from "../IconButton/IconButton";
 
-interface Props {
+export interface IconProps {
   color?: string;
 }
 
@@ -9,10 +9,9 @@ export default function Icon({
   color,
   children,
   ...props
-}: Props & IconButtonProps) {
+}: IconProps & IconButtonProps) {
   return (
     <IconButton
-      // @ts-ignore
       color={color || "primary"}
       disableRipple
       {...props}

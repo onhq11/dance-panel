@@ -1,6 +1,6 @@
-import Img from "@/components/Layout/Img";
 import promo from "@/assets/img/promo.png";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
+import Img from "@/prettylab/core/src/components/image/Img/Img";
 
 export default function Promo() {
   return (

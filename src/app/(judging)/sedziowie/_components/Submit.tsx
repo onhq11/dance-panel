@@ -3,7 +3,7 @@
 import Button from "@/components/Layout/Button";
 import { PiCheck } from "react-icons/pi";
 import { RiArrowGoBackLine } from "react-icons/ri";
-import { SetState } from "@/types/common";
+import { SetState } from "@/prettylab/core/src/types/SetState";
 
 type Props = {
   submitted: boolean;

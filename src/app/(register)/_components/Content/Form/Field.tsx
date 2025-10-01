@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { SxProps, Typography } from "@mui/material";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
 import { useFormContext } from "react-hook-form";
 import { useTheme } from "@mui/material/styles";
 

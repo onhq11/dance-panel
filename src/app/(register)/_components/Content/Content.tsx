@@ -1,4 +1,4 @@
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
 import { Typography } from "@mui/material";
 import Form from "@/app/(register)/_components/Content/Form/Form";
 
