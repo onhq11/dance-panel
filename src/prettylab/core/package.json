@@ -1,15 +1,15 @@
 {
-  "name": "@prettylab/design",
-  "version": "0.0.1-dev-1744384744931",
+  "name": "@prettylab/core",
+  "version": "0.0.2",
   "description": "Design components for NextJS + MaterialUI stack",
   "author": "onhq11",
-  "homepage": "https://github.com/prettylab/design#readme",
+  "homepage": "https://github.com/prettylab/core#readme",
   "bugs": {
-    "url": "https://github.com/prettylab/design/issues"
+    "url": "https://github.com/prettylab/core/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/prettylab/design.git"
+    "url": "git+https://github.com/prettylab/core.git"
   },
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -22,13 +22,9 @@
     "dev": "storybook dev -p 6006"
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^8.6.12",
-    "@storybook/react": "^8.6.12",
-    "@storybook/react-vite": "^8.6.12",
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.2",
     "prettier": "^3.5.3",
-    "storybook": "^8.6.12",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3"
   },
