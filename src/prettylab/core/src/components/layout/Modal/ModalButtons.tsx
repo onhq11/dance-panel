@@ -7,7 +7,7 @@ interface ModalButtonsProps {
   handleClose?: () => void;
   handleConfirm?: () => void;
   loading?: boolean;
-  slotProps?: ModalButtonsSlotProps
+  slotProps?: ModalButtonsSlotProps;
   cancelText?: string;
   confirmText?: string;
 }
@@ -23,11 +23,15 @@ export default function ModalButtons({
   handleConfirm = () => {},
   loading = false,
   slotProps,
-  cancelText = 'Cancel',
-  confirmText = 'Submit',
+  cancelText = "Cancel",
+  confirmText = "Submit",
 }: ModalButtonsProps) {
   return (
-    <Flex end {...slotProps?.container} sx={{ gap: 1, mt: 4, ...slotProps?.container?.sx }}>
+    <Flex
+      end
+      {...slotProps?.container}
+      sx={{ gap: 1, mt: 4, ...slotProps?.container?.sx }}
+    >
       <Button
         variant="outlined"
         color="secondary"
