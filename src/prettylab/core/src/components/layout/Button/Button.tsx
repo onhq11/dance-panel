@@ -1,16 +1,22 @@
 "use client";
 
 import { ReactNode } from "react";
-import { ButtonProps, Tooltip } from "@mui/material";
+import { ButtonProps as MuiButtonProps, Tooltip, TooltipProps } from "@mui/material";
 import MuiButton from "@mui/material/Button";
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 
-interface Props {
+export interface ButtonProps {
   children?: ReactNode;
   href?: string;
   tooltip?: string;
   disabledTooltip?: string;
   target?: string;
+  slotProps?: ButtonSlotProps
+}
+
+export interface ButtonSlotProps {
+  link?: LinkProps;
+  tooltip?: TooltipProps;
 }
 
 export default function Button({
@@ -19,9 +25,9 @@ export default function Button({
   href,
   tooltip,
   disabledTooltip,
-  target,
+  slotProps,
   ...props
-}: Props & ButtonProps) {
+}: ButtonProps & MuiButtonProps) {
   let body = (
     <MuiButton disabled={disabled} {...props}>
       {children}
@@ -37,8 +43,12 @@ export default function Button({
           if (disabled) {
             event.preventDefault();
           }
+          
+          if(slotProps?.link?.onClick) {
+            slotProps.link.onClick(event);
+          }
         }}
-        target={target}
+        {...slotProps?.link}
       >
         {body}
       </Link>
@@ -47,7 +57,7 @@ export default function Button({
 
   if (tooltip) {
     body = (
-      <Tooltip title={disabledTooltip && disabled ? disabledTooltip : tooltip}>
+      <Tooltip title={disabledTooltip && disabled ? disabledTooltip : tooltip} {...slotProps?.tooltip}>
         <span>{body}</span>
       </Tooltip>
     );
@@ -55,7 +65,7 @@ export default function Button({
 
   if (disabledTooltip && !tooltip && disabled) {
     body = (
-      <Tooltip title={disabledTooltip}>
+      <Tooltip title={disabledTooltip} {...slotProps?.tooltip}>
         <span>{body}</span>
       </Tooltip>
     );

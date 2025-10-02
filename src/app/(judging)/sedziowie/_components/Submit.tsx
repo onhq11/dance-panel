@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/components/Layout/Button";
+import Button from "@/prettylab/core/src/components/layout/Button/Button";
 import { PiCheck } from "react-icons/pi";
 import { RiArrowGoBackLine } from "react-icons/ri";
 import { SetState } from "@/prettylab/core/src/types/SetState";
