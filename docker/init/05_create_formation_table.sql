@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS formation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    age_group_id INT NOT NULL,
+    coach_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    choreographer VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

@@ -16,3 +16,4 @@ src/env.ts
 
 #DB Stuff
 docker/mariadb
+/src/generated/prisma

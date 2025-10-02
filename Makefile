@@ -4,7 +4,12 @@ run-database:
 
 stop-database:
 	cd docker
-	docker compose -f docker/compose.yml down
+	docker compose -f docker/compose.yml down -v
+
+reload-database:
+	rm -r docker/mariadb
+	make stop-database
+	make run-database
 
 #CORE APP
 build-app:

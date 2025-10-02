@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS competition (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    starts_at TIMESTAMP NOT NULL,
+    is_active BOOLEAN DEFAULT FALSE,
+    is_registration_open BOOLEAN DEFAULT FALSE,
+    is_running BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
