@@ -1,4 +1,4 @@
-import LazyLoadImage from "@/prettylab/core/src/components/image/LazyLoadImage/LazyLoadImage";
+import LazyLoadImage from "@/prettylab/core/components/image/LazyLoadImage/LazyLoadImage";
 
 export default function Page() {
   return (

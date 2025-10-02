@@ -1,5 +1,5 @@
 import { PiCheckCircle, PiMinusCircle } from "react-icons/pi";
-import Flex from "../../../../../../../../manager/src/components/Layout/Flex";
+import Flex from "../../../../../../../manager/src/components/Layout/Flex";
 import Button, { ButtonProps } from "../Button/Button";
 import { FlexProps } from "../Flex/Flex";
 

@@ -1,24 +1,26 @@
-"use client";
-
-import { TextField, TextFieldProps } from "@mui/material";
-
 import { Controller, useFormContext } from "react-hook-form";
 import { validationRequired } from "@/prettylab/core/utils/form/validation";
 
-interface Props {
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import dayjs from "dayjs";
+
+interface InputYearProps {
   name: string;
   rules?: any;
   onChange?: (e: any) => void;
   required?: boolean;
+  autoComplete?: string;
+  disableFuture?: boolean;
 }
 
-export default function InputText({
+export default function InputYear({
   name,
   rules = {},
   onChange,
   required = false,
-  ...props
-}: Props & Partial<TextFieldProps>) {
+  autoComplete,
+  disableFuture,
+}: InputYearProps) {
   const { control } = useFormContext();
 
   const combinedRules = {
@@ -32,12 +34,9 @@ export default function InputText({
       control={control}
       rules={combinedRules}
       render={({ field, fieldState: { error } }) => (
-        <TextField
+        <DatePicker
           {...field}
-          fullWidth
-          error={!!error}
-          value={field.value || ""}
-          helperText={error ? error.message : ""}
+          value={field.value ? dayjs(field.value) : null}
           onChange={(e) => {
             field.onChange(e);
 
@@ -45,8 +44,17 @@ export default function InputText({
               onChange(e);
             }
           }}
-          {...(required && { required: true })}
-          {...props}
+          slotProps={{
+            textField: {
+              helperText: error ? error.message : "",
+              error: !!error,
+              fullWidth: true,
+              required: required,
+              autoComplete: autoComplete,
+            },
+          }}
+          views={["year"]}
+          disableFuture={disableFuture}
         />
       )}
     />

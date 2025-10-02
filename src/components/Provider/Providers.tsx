@@ -2,11 +2,19 @@
 
 import { ReactNode } from "react";
 import ThemeProvider from "@/components/Provider/ThemeProvider";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 type Props = {
   children: ReactNode;
 };
 
 export default function Providers({ children }: Props) {
-  return <ThemeProvider>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        {children}
+      </LocalizationProvider>
+    </ThemeProvider>
+  );
 }

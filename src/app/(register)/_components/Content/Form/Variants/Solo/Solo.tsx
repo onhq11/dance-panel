@@ -1,8 +1,13 @@
-import Flex from "@/prettylab/core/src/components/layout/Flex/Flex";
+import Flex from "@/prettylab/core/components/layout/Flex/Flex";
 import InputRadioGroup from "@/components/Form/InputRadioGroup";
 import { ageGroups } from "@/assets/data/ageGroup";
 import Field from "@/app/(register)/_components/Content/Form/Field";
 import InputText from "@/components/Form/InputText";
+import {
+  validationEmail,
+  validationPhoneNumber,
+} from "@/prettylab/core/utils/form/validation";
+import InputYear from "@/components/Form/InputYear";
 
 export default function Solo() {
   return (
@@ -33,13 +38,28 @@ export default function Solo() {
         <InputText name={"nickname"} autoComplete="nickname" required />
       </Field>
       <Field name="year_of_birth" label={"Rok urodzenia"}>
-        <InputText name={"year_of_birth"} autoComplete="bday-year" required />
+        <InputYear
+          name={"year_of_birth"}
+          autoComplete="bday-year"
+          required
+          disableFuture
+        />
       </Field>
       <Field name="email" label={"E-Mail"}>
-        <InputText name={"email"} autoComplete="email" required />
+        <InputText
+          name={"email"}
+          autoComplete="email"
+          required
+          rules={validationEmail}
+        />
       </Field>
       <Field name="phone" label={"Numer telefonu"}>
-        <InputText name={"phone"} autoComplete="tel" required />
+        <InputText
+          name={"phone"}
+          autoComplete="tel"
+          required
+          rules={validationPhoneNumber}
+        />
       </Field>
     </Flex>
   );
