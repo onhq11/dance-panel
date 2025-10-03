@@ -32,7 +32,7 @@ export default function NotifyProvider({ children }: Props) {
         horizontal: "right",
       }}
       maxSnack={20}
-      autoHideDuration={1000000}
+      autoHideDuration={3000}
       action={(key) => (
         <Flex alignCenter>
           <MdClose

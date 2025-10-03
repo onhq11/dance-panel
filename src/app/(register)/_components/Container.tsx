@@ -10,13 +10,15 @@ export default function Container({ children }: Props) {
     <Flex center>
       <Flex
         sx={{
-          height: { xs: "", xl: "calc(100vh - 128px)" },
-          my: 8,
-          mx: 16,
+          height: { xs: "100vh", md: "calc(100vh - 128px)" },
+          my: { xs: 0, md: 8 },
+          mx: { xs: 0, md: 16 },
           boxShadow: "-10px 30px 50px 30px rgba(0, 0, 0, 0.3)",
-          width: { xs: "50%", xl: "100%" },
-          borderRadius: "24px",
-          flexDirection: { xs: "column", xl: "row" },
+          width: "100%",
+          borderRadius: { xs: 0, md: "24px" },
+          flexDirection: { xs: "column", md: "row" },
+          overflowY: { xs: "auto", md: "none" },
+          overscrollBehavior: "none",
         }}
       >
         {children}

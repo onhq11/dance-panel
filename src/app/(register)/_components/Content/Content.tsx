@@ -8,18 +8,17 @@ export default function Content() {
       column
       sx={{
         backgroundColor: "white",
-        borderTopRightRadius: { xs: "", xl: "24px" },
-        borderBottomRightRadius: "24px",
-        borderBottomLeftRadius: { xs: "24px", xl: "" },
+        borderTopRightRadius: { xs: 0, md: "24px" },
+        borderBottomRightRadius: { xs: 0, md: "24px" },
         flex: 1,
-        py: 8,
-        px: 12,
-        overflowY: "auto",
+        py: { xs: 4, md: 8 },
+        px: { xs: 4, md: 12 },
+        overflowY: { xs: "none", md: "auto" },
       }}
     >
       <Typography
         sx={{
-          fontSize: 48,
+          fontSize: { xs: 32, md: 48 },
           textTransform: "uppercase",
           fontWeight: "bold",
         }}

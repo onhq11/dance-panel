@@ -9,11 +9,10 @@ export default function Promo() {
         src={promo.src}
         alt={"Promo card"}
         sx={{
-          height: { xs: "400px", xl: "100%" },
-          objectFit: { xs: "cover", xl: "contain" },
-          borderTopLeftRadius: "24px",
-          borderTopRightRadius: { xs: "24px", xl: "0px" },
-          borderBottomLeftRadius: { xs: "0px", xl: "24px" },
+          height: { xs: "200px", md: "100%" },
+          objectFit: { xs: "cover", md: "contain" },
+          borderTopLeftRadius: { xs: 0, md: "24px" },
+          borderBottomLeftRadius: { xs: 0, md: "24px" },
         }}
       />
     </Flex>

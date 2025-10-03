@@ -1,21 +1,26 @@
 "use client";
 
 import { ReactNode } from "react";
-import { ButtonProps as MuiButtonProps, Tooltip, TooltipProps } from "@mui/material";
+import {
+  ButtonProps as MuiButtonProps,
+  Tooltip,
+  TooltipProps,
+} from "@mui/material";
 import MuiButton from "@mui/material/Button";
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
+import { jsx } from "@emotion/react";
+import IntrinsicElements = jsx.JSX.IntrinsicElements;
 
 export interface ButtonProps {
   children?: ReactNode;
   href?: string;
   tooltip?: string;
   disabledTooltip?: string;
-  target?: string;
-  slotProps?: ButtonSlotProps
+  slotProps?: ButtonSlotProps;
 }
 
 export interface ButtonSlotProps {
-  link?: LinkProps;
+  link?: IntrinsicElements["a"];
   tooltip?: TooltipProps;
 }
 
@@ -43,8 +48,8 @@ export default function Button({
           if (disabled) {
             event.preventDefault();
           }
-          
-          if(slotProps?.link?.onClick) {
+
+          if (slotProps?.link?.onClick) {
             slotProps.link.onClick(event);
           }
         }}
@@ -57,7 +62,10 @@ export default function Button({
 
   if (tooltip) {
     body = (
-      <Tooltip title={disabledTooltip && disabled ? disabledTooltip : tooltip} {...slotProps?.tooltip}>
+      <Tooltip
+        title={disabledTooltip && disabled ? disabledTooltip : tooltip}
+        {...slotProps?.tooltip}
+      >
         <span>{body}</span>
       </Tooltip>
     );

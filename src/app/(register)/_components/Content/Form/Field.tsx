@@ -1,4 +1,4 @@
-import { ReactNode, useEffect } from "react";
+import { ReactNode } from "react";
 import { SxProps, Typography } from "@mui/material";
 import Flex from "@/prettylab/core/components/layout/Flex/Flex";
 import { useFormContext } from "react-hook-form";
@@ -17,10 +17,6 @@ export default function Field({ name, label, children, sx }: Props) {
   const {
     formState: { errors },
   } = useFormContext();
-
-  useEffect(() => {
-    console.log(errors);
-  }, [errors]);
 
   return (
     <Flex column sx={{ gap: 1, ...sx }}>

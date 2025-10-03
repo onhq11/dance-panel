@@ -25,7 +25,10 @@ export default function Form() {
   const type = watch("type");
 
   const onSubmit = (data: any) => {
-    if (!(data.dancers?.length > 0)) {
+    if (
+      !(data.dancers?.length > 0) &&
+      data.type === registrationType.formation
+    ) {
       enqueueSnackbar("Dodaj przynajmniej jednego tancerza!", {
         variant: "warning",
       });

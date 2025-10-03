@@ -78,14 +78,13 @@ export default function InputRadioGroup({
                           sx={{
                             color: !!error ? theme.palette.error.main : "",
                             textAlign: "center",
-                            fontSize: 16,
+                            fontSize: { xs: 14, md: 16 },
+                            "& span": { fontSize: { xs: 9, md: 11 } },
                           }}
                         >
                           {item.label}
                           <br />
-                          <span style={{ fontSize: 11 }}>
-                            Wolne miejsca: {item.available_slots}
-                          </span>
+                          <span>Wolne miejsca: {item.available_slots}</span>
                         </Typography>
                       </Paper>
                     }
@@ -101,14 +100,13 @@ export default function InputRadioGroup({
                           sx={{
                             color: !!error ? theme.palette.error.main : "white",
                             textAlign: "center",
-                            fontSize: 16,
+                            fontSize: { xs: 14, md: 16 },
+                            "& span": { fontSize: { xs: 9, md: 11 } },
                           }}
                         >
                           {item.label}
                           <br />
-                          <span style={{ fontSize: 11 }}>
-                            Wolne miejsca: {item.available_slots}
-                          </span>
+                          <span>Wolne miejsca: {item.available_slots}</span>
                         </Typography>
                       </Paper>
                     }
