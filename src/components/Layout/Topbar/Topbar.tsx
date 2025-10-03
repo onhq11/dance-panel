@@ -1,4 +1,4 @@
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/components/layout/Flex/Flex";
 import Heading from "@/components/Layout/Topbar/Heading";
 import Toolbar from "@/components/Layout/Topbar/Toolbar";
 

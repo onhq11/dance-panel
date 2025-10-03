@@ -13,9 +13,11 @@ import { useState } from "react";
 import Button from "@/prettylab/core/components/layout/Button/Button";
 import ResultPage from "@/app/(register)/_components/Content/ResultPage/ResultPage";
 import SlideIn from "@/prettylab/core/components/animation/SlideIn/SlideIn";
+import { useSnackbar } from "notistack";
 
 export default function Form() {
   const form = useForm();
+  const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
   const [resultPage, setResultPage] = useState(false);
 
@@ -23,8 +25,14 @@ export default function Form() {
   const type = watch("type");
 
   const onSubmit = (data: any) => {
+    if (!(data.dancers?.length > 0)) {
+      enqueueSnackbar("Dodaj przynajmniej jednego tancerza!", {
+        variant: "warning",
+      });
+      return;
+    }
+
     setLoading(true);
-    console.log(data);
 
     setTimeout(() => setResultPage(true), 2000);
   };

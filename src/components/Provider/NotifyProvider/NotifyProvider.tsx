@@ -8,7 +8,7 @@ import ErrorSnackbar from "@/components/Provider/NotifyProvider/Variants/ErrorSn
 import WarningSnackbar from "@/components/Provider/NotifyProvider/Variants/WarningSnackbar";
 import InfoSnackbar from "@/components/Provider/NotifyProvider/Variants/InfoSnackbar";
 import { MdClose } from "react-icons/md";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/components/layout/Flex/Flex";
 
 interface Props {
   children: ReactNode;

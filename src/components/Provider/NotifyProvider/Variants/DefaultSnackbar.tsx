@@ -5,7 +5,7 @@ import Snackbar, {
   SnackbarProps,
 } from "@/components/Provider/NotifyProvider/Variants/Snackbar";
 import { useTheme } from "@mui/material";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/components/layout/Flex/Flex";
 import Link from "next/link";
 import { MdOutlineEmail } from "react-icons/md";
 

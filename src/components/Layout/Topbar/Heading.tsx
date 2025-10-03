@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { Typography, useTheme } from "@mui/material";
 import { getRouteInfoByUrl } from "@/utils/route";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/components/layout/Flex/Flex";
 import DrawerExpandButton from "../../../../../dance-panel/src/components/Layout/Menu/DrawerExpandButton";
 import {
   useMenuHandleOpen,

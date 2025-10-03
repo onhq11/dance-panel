@@ -6,7 +6,7 @@ import Snackbar, {
 } from "@/components/Provider/NotifyProvider/Variants/Snackbar";
 import { useTheme } from "@mui/material";
 import Link from "next/link";
-import Flex from "@/components/Layout/Flex";
+import Flex from "@/prettylab/core/components/layout/Flex/Flex";
 
 function SuccessSnackbar(
   { id, message, action, options }: SnackbarProps,
