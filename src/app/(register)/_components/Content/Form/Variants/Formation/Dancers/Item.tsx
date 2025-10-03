@@ -1,4 +1,4 @@
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import InputText from "@/components/Form/InputText";
 import Field from "@/app/(register)/_components/Content/Form/Field";
 import InputYear from "@/components/Form/InputYear";
@@ -7,8 +7,8 @@ import InputSwitch from "@/components/Form/InputSwitch";
 import { useFormContext } from "react-hook-form";
 import { ageGroups } from "@/assets/data/ageGroup";
 import InputRadioGroup from "@/components/Form/InputRadioGroup";
-import Button from "@/prettylab/core/components/layout/Button/Button";
-import Icon from "@/prettylab/core/components/layout/Icon/Icon";
+import Button from "@prettylab/core/components/layout/Button/Button";
+import Icon from "@prettylab/core/components/layout/Icon/Icon";
 import { MdPerson } from "react-icons/md";
 import { Typography } from "@mui/material";
 

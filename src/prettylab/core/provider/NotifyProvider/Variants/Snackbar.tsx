@@ -1,6 +1,6 @@
 import { Ref, forwardRef, ReactNode } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 
 interface Props {
   id: any;

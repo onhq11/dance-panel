@@ -1,5 +1,5 @@
 import { Controller, useFormContext } from "react-hook-form";
-import { validationRequired } from "@/prettylab/core/utils/form/validation";
+import { validationRequired } from "@prettylab/core/utils/form/validation";
 
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import dayjs from "dayjs";

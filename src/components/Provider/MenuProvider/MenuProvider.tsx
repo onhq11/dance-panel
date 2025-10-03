@@ -1,20 +1,11 @@
 "use client";
 
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useEffect,
-  useState,
-} from "react";
-import { useBreakpointDown } from "@/utils/breakpoint";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { SetState } from "@/types/state";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
-import { boolean } from "@/utils/typeTransformer";
-import { useSettings } from "@/hooks/useSettings";
-import { defaultSettings } from "@/utils/settings/utils";
+import { SetState } from "@prettylab/core/types/SetState";
+import { useBreakpointDown } from "@prettylab/core/utils/mui/breakpoints";
+import { useSettings } from "@prettylab/core/hooks/useSettings";
+import { defaultSettings } from "@/config/settings";
 
 interface Props {
   settings: any;

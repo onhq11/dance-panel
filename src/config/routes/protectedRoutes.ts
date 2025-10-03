@@ -1,12 +1,12 @@
-import { Route } from "../../../../manager/src/utils/route";
+import { Route } from "@prettylab/core/types/Route";
 
 export const protectedRoutes: Record<string, Route> = {
   index: {
-    href: "/dashboard",
-    label: "Dashboard",
+    href: "/administracja",
+    label: "Administracja",
   },
-  docs: {
-    href: "/docs",
-    label: "Docs",
+  users: {
+    href: "/uzytkownicy",
+    label: "Użytkownicy",
   },
 };

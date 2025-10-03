@@ -1,11 +1,11 @@
 "use client";
 
 import { ReactNode } from "react";
-import Flex from "../../../../../../manager/src/components/Layout/Flex";
 import NavButton from "./NavButton";
-import { Route as RouteType } from "../../../../../../manager/src/utils/route";
 import { SxProps } from "@mui/system";
 import { Box, Typography } from "@mui/material";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
+import { Route as RouteType } from "@prettylab/core/types/Route";
 
 interface Props {
   route: RouteType | undefined;
@@ -43,7 +43,10 @@ export default function Route({
             className="collapse-effect"
             sx={{ position: "absolute", width: "100%", alignItems: "start" }}
           >
-            <Typography component="span" sx={{ fontSize: 14 }}>
+            <Typography
+              component="span"
+              sx={{ fontSize: 14, textTransform: "none" }}
+            >
               {label || route.label}
             </Typography>
             {route.subLabel && (

@@ -7,8 +7,8 @@ import {
   SwitchProps as MuiSwitchProps,
 } from "@mui/material";
 import { Controller, useFormContext } from "react-hook-form";
-import { validationRequired } from "@/prettylab/core/utils/form/validation";
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import { validationRequired } from "@prettylab/core/utils/form/validation";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 
 interface SwitchProps {
   name: string;

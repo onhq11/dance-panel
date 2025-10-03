@@ -1,0 +1,14 @@
+html, body {
+    margin: 0;
+    overscroll-behavior: none;
+    overscroll-behavior-y: none;
+}
+
+.animated {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.animated::-webkit-scrollbar {
+    display: none;
+}

@@ -1,4 +1,4 @@
-import { Route } from "../../../../manager/src/utils/route";
+import { Route } from "@prettylab/core/types/Route";
 
 export const routes: Record<string, Route> = {
   index: {

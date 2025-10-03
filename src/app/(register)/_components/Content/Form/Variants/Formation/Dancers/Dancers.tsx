@@ -1,7 +1,7 @@
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import { Divider, Typography } from "@mui/material";
-import Button from "@/prettylab/core/components/layout/Button/Button";
+import Button from "@prettylab/core/components/layout/Button/Button";
 import { MdPerson } from "react-icons/md";
 import Item from "@/app/(register)/_components/Content/Form/Variants/Formation/Dancers/Item";
 import { Fragment, useEffect } from "react";

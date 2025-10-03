@@ -2,14 +2,14 @@
 
 import { usePathname } from "next/navigation";
 import { Typography, useTheme } from "@mui/material";
-import { getRouteInfoByUrl } from "@/utils/route";
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
-import DrawerExpandButton from "../../../../../dance-panel/src/components/Layout/Menu/DrawerExpandButton";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import {
   useMenuHandleOpen,
   useMenuIsDrawer,
   useMenuTitle,
 } from "@/hooks/useMenu";
+import DrawerExpandButton from "@/components/Layout/Menu/DrawerExpandButton";
+import { getRouteObjectByPathname } from "@prettylab/core/utils/route/route";
 
 export default function Heading() {
   const pathname = usePathname();
@@ -30,7 +30,7 @@ export default function Heading() {
           textTransform: "capitalize",
         }}
       >
-        {title || getRouteInfoByUrl(pathname)?.label}
+        {title || getRouteObjectByPathname(pathname)?.label}
       </Typography>
     </Flex>
   );

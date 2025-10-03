@@ -3,7 +3,7 @@
 import { TextField, TextFieldProps } from "@mui/material";
 
 import { Controller, useFormContext } from "react-hook-form";
-import { validationRequired } from "@/prettylab/core/utils/form/validation";
+import { validationRequired } from "@prettylab/core/utils/form/validation";
 
 interface Props {
   name: string;

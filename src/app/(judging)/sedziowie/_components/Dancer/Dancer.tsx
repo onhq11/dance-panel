@@ -1,6 +1,6 @@
 "use client";
 
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import { Typography } from "@mui/material";
 import Score from "@/app/(judging)/sedziowie/_components/Dancer/Score";
 

@@ -1,7 +1,4 @@
-import {
-  emailRegex,
-  phoneNumberRegex,
-} from "@/prettylab/core/utils/form/regex";
+import { emailRegex, phoneNumberRegex } from "@prettylab/core/utils/form/regex";
 
 export const validationRequired = {
   required: "Pole jest wymagane",

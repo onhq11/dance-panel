@@ -16,6 +16,7 @@ const eslintConfig = [
       "import/no-anonymous-default-export": "off",
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/ban-ts-comment": "off",
+      "react-hooks/exhaustive-deps": "off",
     },
   }),
   {

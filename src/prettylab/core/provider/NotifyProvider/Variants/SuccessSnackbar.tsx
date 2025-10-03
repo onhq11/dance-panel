@@ -1,14 +1,14 @@
 import { Ref, forwardRef } from "react";
-import { PiCheck, PiX } from "react-icons/pi";
+import { PiCheck } from "react-icons/pi";
 
 import Snackbar, {
   SnackbarProps,
-} from "@/components/Provider/NotifyProvider/Variants/Snackbar";
+} from "@prettylab/core/provider/NotifyProvider/Variants/Snackbar";
 import { useTheme } from "@mui/material";
 import Link from "next/link";
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 
-function ErrorSnackbar(
+function SuccessSnackbar(
   { id, message, action, options }: SnackbarProps,
   ref: Ref<unknown> | undefined,
 ) {
@@ -27,12 +27,12 @@ function ErrorSnackbar(
       id={id}
       message={message}
       action={action}
-      icon={icon || <PiX size={20} />}
-      color={theme.palette.error}
+      icon={icon || <PiCheck size={20} />}
+      color={theme.palette.success}
     >
       {linkElement}
     </Snackbar>
   );
 }
 
-export default forwardRef(ErrorSnackbar);
+export default forwardRef(SuccessSnackbar);

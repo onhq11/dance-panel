@@ -1,11 +1,11 @@
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import { Divider, Typography } from "@mui/material";
 import Field from "@/app/(register)/_components/Content/Form/Field";
 import InputText from "@/components/Form/InputText";
 import {
   validationEmail,
   validationPhoneNumber,
-} from "@/prettylab/core/utils/form/validation";
+} from "@prettylab/core/utils/form/validation";
 
 export default function Coach() {
   return (

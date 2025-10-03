@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import { SxProps, Typography } from "@mui/material";
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import { useFormContext } from "react-hook-form";
 import { useTheme } from "@mui/material/styles";
-import getValue from "@/prettylab/core/utils/data/getValue";
+import getValue from "@prettylab/core/utils/data/getValue";
 
 type Props = {
   name: string;

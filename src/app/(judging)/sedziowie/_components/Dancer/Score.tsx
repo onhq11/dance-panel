@@ -4,7 +4,7 @@ import Picker from "react-mobile-picker";
 import { useState } from "react";
 import { Box } from "@mui/material";
 
-const availableScores = Array.from({ length: 11 }, (_, i) => i);
+const availableScores = Array.from({ length: 21 }, (_, i) => i * 0.5);
 
 type Props = {
   submitted: boolean;

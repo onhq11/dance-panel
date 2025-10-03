@@ -1,4 +1,4 @@
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import { Typography } from "@mui/material";
 
 export default function TopBar() {

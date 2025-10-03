@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import ThemeProvider from "@/components/Provider/ThemeProvider";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import NotifyProvider from "@/components/Provider/NotifyProvider/NotifyProvider";
+import NotifyProvider from "@prettylab/core/provider/NotifyProvider/NotifyProvider";
 
 type Props = {
   children: ReactNode;

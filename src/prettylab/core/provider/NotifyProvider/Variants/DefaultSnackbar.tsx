@@ -1,11 +1,10 @@
-import { Ref, forwardRef } from "react";
-import { PiCheck } from "react-icons/pi";
+import { forwardRef, Ref } from "react";
 
 import Snackbar, {
   SnackbarProps,
-} from "@/components/Provider/NotifyProvider/Variants/Snackbar";
+} from "@prettylab/core/provider/NotifyProvider/Variants/Snackbar";
 import { useTheme } from "@mui/material";
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import Link from "next/link";
 import { MdOutlineEmail } from "react-icons/md";
 

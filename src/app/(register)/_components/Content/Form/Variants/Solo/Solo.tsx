@@ -1,4 +1,4 @@
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import InputRadioGroup from "@/components/Form/InputRadioGroup";
 import { ageGroups } from "@/assets/data/ageGroup";
 import Field from "@/app/(register)/_components/Content/Form/Field";
@@ -6,7 +6,7 @@ import InputText from "@/components/Form/InputText";
 import {
   validationEmail,
   validationPhoneNumber,
-} from "@/prettylab/core/utils/form/validation";
+} from "@prettylab/core/utils/form/validation";
 import InputYear from "@/components/Form/InputYear";
 
 export default function Solo() {

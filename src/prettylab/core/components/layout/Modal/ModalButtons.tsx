@@ -1,7 +1,6 @@
 import { PiCheckCircle, PiMinusCircle } from "react-icons/pi";
-import Flex from "../../../../../../../manager/src/components/Layout/Flex";
 import Button, { ButtonProps } from "../Button/Button";
-import { FlexProps } from "../Flex/Flex";
+import Flex, { FlexProps } from "../Flex/Flex";
 
 interface ModalButtonsProps {
   handleClose?: () => void;

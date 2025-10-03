@@ -1,12 +1,12 @@
 "use client";
 
-import { alpha, Box, Button, useTheme } from "@mui/material";
-import { ReactNode, useContext, useEffect, useState } from "react";
+import { alpha, Box, Button } from "@mui/material";
+import { ReactNode, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { SxProps } from "@mui/system";
-import { useMenuCollapsed, useMenuHandleClose } from "../../../../../../manager/src/hooks/useMenu";
 import Link from "next/link";
-import Flex from "../../../../../../manager/src/components/Layout/Flex";
+import { useMenuCollapsed, useMenuHandleClose } from "@/hooks/useMenu";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 
 interface Props {
   children: ReactNode;
@@ -16,7 +16,6 @@ interface Props {
 }
 
 export default function NavButton({ children, href, sx, disabled }: Props) {
-  const theme = useTheme();
   const pathname = usePathname();
   const handleClose = useMenuHandleClose();
   const collapsed = useMenuCollapsed();
@@ -63,11 +62,11 @@ export default function NavButton({ children, href, sx, disabled }: Props) {
             margin: "auto 0",
             ...(pathname === href
               ? {
-                  backgroundColor: theme.palette.primary.main,
+                  backgroundColor: "#fff",
                 }
               : !disabled &&
                 hover && {
-                  backgroundColor: alpha(theme.palette.primary.main, 0.5),
+                  backgroundColor: alpha("#fff", 0.5),
                 }),
             borderRadius: "9px",
             transition: "0.2s",
@@ -78,7 +77,7 @@ export default function NavButton({ children, href, sx, disabled }: Props) {
           color="secondary"
           sx={{
             width: "100%",
-            color: theme.palette.primary.main,
+            color: "#fff",
             pl: 2,
             py: 1.25,
             borderRadius: 0,

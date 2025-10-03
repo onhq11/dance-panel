@@ -1,13 +1,13 @@
 "use client";
 
-import icon from "../../../../../manager/src/assets/transparent-logo.png";
-import text from "../../../../../manager/src/assets/text-icon.png";
-import { ReactNode, useEffect, useState } from "react";
-import Flex from "../../../../../manager/src/components/Layout/Flex";
+import icon from "@prettylab/core/assets/transparent-logo.png";
+import text from "@prettylab/core/assets/text-icon.png";
 import Container from "./Container";
-import Img from "../../../../../manager/src/components/Layout/Img";
-import { useMenuCollapsed } from "../../../../../manager/src/hooks/useMenu";
 import { Box } from "@mui/material";
+import { ReactNode } from "react";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
+import Img from "@prettylab/core/components/image/Img/Img";
+import { useMenuCollapsed } from "@/hooks/useMenu";
 
 interface Props {
   children: ReactNode;

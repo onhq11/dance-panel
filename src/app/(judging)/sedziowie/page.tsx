@@ -1,6 +1,6 @@
 "use client";
 
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import TopBar from "@/app/(judging)/sedziowie/_components/TopBar";
 import { dancers } from "@/assets/data/dancers";
 import Dancer from "@/app/(judging)/sedziowie/_components/Dancer/Dancer";

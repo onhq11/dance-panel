@@ -1,7 +1,7 @@
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import { Avatar } from "@mui/material";
 import { CiBellOn, CiSearch, CiSettings } from "react-icons/ci";
-import IconButton from "@/components/Layout/IconButton";
+import IconButton from "@prettylab/core/components/layout/IconButton/IconButton";
 
 export default function Toolbar() {
   return (

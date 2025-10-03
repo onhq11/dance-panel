@@ -2,13 +2,13 @@
 
 import { ReactNode, useRef } from "react";
 import { SnackbarProvider } from "notistack";
-import DefaultSnackbar from "@/components/Provider/NotifyProvider/Variants/DefaultSnackbar";
-import SuccessSnackbar from "@/components/Provider/NotifyProvider/Variants/SuccessSnackbar";
-import ErrorSnackbar from "@/components/Provider/NotifyProvider/Variants/ErrorSnackbar";
-import WarningSnackbar from "@/components/Provider/NotifyProvider/Variants/WarningSnackbar";
-import InfoSnackbar from "@/components/Provider/NotifyProvider/Variants/InfoSnackbar";
+import DefaultSnackbar from "@prettylab/core/provider/NotifyProvider/Variants/DefaultSnackbar";
+import SuccessSnackbar from "@prettylab/core/provider/NotifyProvider/Variants/SuccessSnackbar";
+import ErrorSnackbar from "@prettylab/core/provider/NotifyProvider/Variants/ErrorSnackbar";
+import WarningSnackbar from "@prettylab/core/provider/NotifyProvider/Variants/WarningSnackbar";
+import InfoSnackbar from "@prettylab/core/provider/NotifyProvider/Variants/InfoSnackbar";
 import { MdClose } from "react-icons/md";
-import Flex from "@/prettylab/core/components/layout/Flex/Flex";
+import Flex from "@prettylab/core/components/layout/Flex/Flex";
 
 interface Props {
   children: ReactNode;
