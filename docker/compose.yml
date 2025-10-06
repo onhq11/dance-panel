@@ -24,4 +24,4 @@ services:
       PMA_PASSWORD: ${MARIADB_PASSWORD}
       UPLOAD_LIMIT: 256M
     ports:
-      - "8888:80"
+      - "${PMA_PORT}:80"
