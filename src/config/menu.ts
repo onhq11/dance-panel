@@ -1,12 +1,6 @@
-import { ElementType } from "react";
 import { CiGrid41, CiUser } from "react-icons/ci";
-import { Route } from "@prettylab/core/types/Route";
 import { protectedRoutes } from "@/config/routes/protectedRoutes";
-
-export interface MenuEntry {
-  route: Route;
-  icon: ElementType;
-}
+import { MenuEntry } from "@prettylab/core/types/MenuEntry";
 
 export const menu: Array<MenuEntry> = [
   {

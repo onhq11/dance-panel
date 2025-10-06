@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { SetState } from "@prettylab/core/types/SetState";
 import { useBreakpointDown } from "@prettylab/core/utils/mui/breakpoints";
 import { useSettings } from "@prettylab/core/hooks/useSettings";
-import { defaultSettings } from "@/config/settings";
+import config from "@prettylab/config";
 
 interface Props {
   settings: any;
@@ -25,7 +25,7 @@ interface ContextProps {
 
 export const MenuContext = createContext<ContextProps>({});
 export default function MenuProvider({
-  settings = defaultSettings,
+  settings = config.core.settings.defaults,
   children,
 }: Props) {
   const pathname = usePathname();

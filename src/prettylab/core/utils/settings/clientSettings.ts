@@ -6,10 +6,11 @@ import {
   getCookie,
   setCookie,
 } from "@prettylab/core/utils/cookie/clientCookie";
+import config from "@prettylab/config";
 
 export function getClientSettings(key?: string) {
   try {
-    const encoded = getCookie("settings");
+    const encoded = getCookie(config.core.settings.cookie_name);
     const settings = encoded ? decodeSettings(encoded) : {};
     return (key ? settings[key] : settings) ?? null;
   } catch (err) {
@@ -20,10 +21,10 @@ export function getClientSettings(key?: string) {
 
 export function saveClientSettings(key: string, value: any): void {
   try {
-    const encoded = getCookie("settings");
+    const encoded = getCookie(config.core.settings.cookie_name);
     const settings = encoded ? decodeSettings(encoded) : {};
     settings[key] = value;
-    setCookie("settings", encodeSettings(settings));
+    setCookie(config.core.settings.cookie_name, encodeSettings(settings));
   } catch (err) {
     console.error(err);
   }
