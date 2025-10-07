@@ -1,11 +1,11 @@
 #CORE DATABASE
 start-database:
-	docker compose -f docker/compose.yml up -d
+	docker compose -f docker/compose.yml -p dance up -d
 	@echo "\\n\033[32m○  Baza danych uruchomiona\033[0m"
 
 stop-database:
 	cd docker
-	docker compose -f docker/compose.yml down -v
+	docker compose -f docker/compose.yml -p dance down -v
 	@echo "\\n\033[31m○  Baza danych zatrzymana\033[0m"
 
 restart-database:
