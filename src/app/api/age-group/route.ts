@@ -9,4 +9,4 @@ export const ageGroupTable = {
   defaultOrderBy: "created_at",
 };
 
-export const { GET, POST, PATCH, DELETE } = createCrudHandlers(ageGroupTable);
+export const { GET, POST } = createCrudHandlers(ageGroupTable);
