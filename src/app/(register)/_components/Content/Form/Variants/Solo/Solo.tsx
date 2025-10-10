@@ -9,7 +9,13 @@ import {
 } from "@prettylab/core/utils/form/validation";
 import InputYear from "@/components/Form/InputYear";
 
-export default function Solo() {
+interface Props {
+  ageGroupData: any;
+}
+
+export default function Solo({ ageGroupData }: Props) {
+  console.log(ageGroupData);
+
   return (
     <Flex column sx={{ gap: 3 }}>
       <InputRadioGroup

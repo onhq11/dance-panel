@@ -4,11 +4,12 @@ import Formation from "@/app/(register)/_components/Content/Form/Variants/Format
 
 type Props = {
   type: string;
+  ageGroupData: any;
 };
 
-export default function VariantResolver({ type }: Props) {
+export default function VariantResolver({ type, ageGroupData }: Props) {
   if (type === registrationType.solo) {
-    return <Solo />;
+    return <Solo ageGroupData={ageGroupData} />;
   }
 
   if (type === registrationType.formation) {

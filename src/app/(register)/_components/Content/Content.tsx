@@ -1,8 +1,11 @@
 import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import { Typography } from "@mui/material";
 import Form from "@/app/(register)/_components/Content/Form/Form";
+import { list } from "@prettylab/core/utils/api/crud";
 
-export default function Content() {
+export default async function Content() {
+  const { data } = await list("http://localhost:4000/api/age-group");
+
   return (
     <Flex
       column
@@ -26,7 +29,7 @@ export default function Content() {
       >
         Rejestracja
       </Typography>
-      <Form />
+      <Form ageGroupData={data} />
     </Flex>
   );
 }

@@ -34,7 +34,6 @@ export const formationTable = {
         "first_name",
         "last_name",
         "club_name",
-        "year_of_birth",
         "email",
         "phone",
         "created_at",

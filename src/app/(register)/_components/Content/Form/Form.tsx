@@ -14,8 +14,14 @@ import Button from "@prettylab/core/components/layout/Button/Button";
 import ResultPage from "@/app/(register)/_components/Content/ResultPage/ResultPage";
 import SlideIn from "@prettylab/core/components/animation/SlideIn/SlideIn";
 import { useSnackbar } from "notistack";
+import { create } from "@prettylab/core/utils/api/crud";
+import dayjs from "dayjs";
 
-export default function Form() {
+interface Props {
+  ageGroupData: any;
+}
+
+export default function Form({ ageGroupData }: Props) {
   const form = useForm();
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
@@ -24,7 +30,7 @@ export default function Form() {
   const { handleSubmit, watch, reset } = form;
   const type = watch("type");
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     if (
       !(data.dancers?.length > 0) &&
       data.type === registrationType.formation
@@ -35,9 +41,27 @@ export default function Form() {
       return;
     }
 
-    setLoading(true);
+    // setLoading(true);
 
-    setTimeout(() => setResultPage(true), 2000);
+    const preparedData = {
+      type: data.type,
+      age_group_id: data.age_group_id,
+      first_name: data.first_name,
+      last_name: data.last_name,
+      nickname: data.nickname,
+      year_of_birth: dayjs(data.year_of_birth).format("YYYY"),
+      email: data.email,
+      phone: data.phone,
+    };
+
+    const response = await create(
+      "http://localhost:4000/api/register",
+      preparedData,
+    );
+    console.log(response);
+
+    // setLoading(false);
+    // setResultPage(true);
   };
 
   const handleReset = () => {
@@ -64,7 +88,7 @@ export default function Form() {
                 }))}
               />
             </Field>
-            <VariantResolver type={type} />
+            <VariantResolver type={type} ageGroupData={ageGroupData} />
             {!!type && (
               <Button
                 loading={loading}
