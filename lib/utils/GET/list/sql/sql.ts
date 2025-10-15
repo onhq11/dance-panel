@@ -21,7 +21,7 @@ const defaultFiltersConfig: FiltersConfig = {
   order: true,
 };
 
-export const buildQuery = async (
+export const buildGETListQuery = async (
   req: Request,
   cfg: CrudConfig,
   filtersConfig: FiltersConfig = defaultFiltersConfig,

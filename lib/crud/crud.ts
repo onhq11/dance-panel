@@ -1,43 +1,38 @@
-import { db } from "../db";
-import { CrudConfig, HasMany, IdPromise } from "@lib/utils/_shared/types";
-import { buildBelongsToJoins } from "@lib/utils/GET/list/relation/belongsTo";
-import { q } from "@lib/utils/_shared/common";
-import { buildQuery } from "@lib/utils/GET/list/sql/sql";
-import { GETSuccessResponse } from "@lib/utils/GET/list/response/GETSuccessResponse";
-import { GETErrorResponse } from "@lib/utils/GET/list/response/GETErrorResponse";
+import { CrudConfig, IdPromise } from "@lib/utils/_shared/types";
+import { buildGETListQuery } from "@lib/utils/GET/list/sql/sql";
+import { GETListSuccessResponse } from "@lib/utils/GET/list/response/GETListSuccessResponse";
+import { GETListErrorResponse } from "@lib/utils/GET/list/response/GETListErrorResponse";
 import { POSTSuccessResponse } from "@lib/utils/POST/create/response/POSTSuccessResponse";
 import { POSTErrorResponse } from "@lib/utils/POST/create/response/POSTErrorResponse";
+import { buildPOSTQuery } from "@lib/utils/POST/create/sql/sql";
+import { GETReadErrorResponse } from "@lib/utils/GET/read/response/GETReadErrorResponse";
+import { GETReadSuccessResponse } from "@lib/utils/GET/read/response/GETReadSuccessResponse";
+import { buildGETReadQuery } from "@lib/utils/GET/read/sql/sql";
+import { DELETEErrorResponse } from "@lib/utils/DELETE/remove/response/DELETEErrorResponse";
+import { buildDELETEQuery } from "@lib/utils/DELETE/remove/sql/sql";
+import { DELETESuccessResponse } from "@lib/utils/DELETE/remove/response/DELETESuccessResponse";
+import { DELETENotFoundResponse } from "@lib/utils/DELETE/remove/response/DELETENotFoundResponse";
+import { PATCHErrorResponse } from "@lib/utils/PATCH/update/response/PATCHErrorResponse";
+import { buildPATCHQuery } from "@lib/utils/PATCH/update/sql/sql";
+import { PATCHNotFoundResponse } from "@lib/utils/PATCH/update/response/PATCHNotFoundResponse";
 
 export function createCrudHandlers(cfg: CrudConfig) {
   const GET = async (req: Request) => {
     try {
-      const { data, meta } = await buildQuery(req, cfg);
-      return GETSuccessResponse(data, meta);
+      const { data, meta } = await buildGETListQuery(req, cfg);
+      return GETListSuccessResponse(data, meta);
     } catch (error: any) {
       console.error(error.message);
-      return GETErrorResponse();
+      return GETListErrorResponse();
     }
   };
 
   const POST = async (req: Request) => {
     try {
-      const payload = await req.json();
-      const data: Record<string, any> = {};
-      for (const k of cfg.editable)
-        if (payload[k] !== undefined) data[k] = payload[k];
-      if (!Object.keys(data).length)
-        throw new Error("No editable fields provided.");
-      const cols = Object.keys(data);
-      const vals = Object.values(data);
-
-      const [res]: any = await db.query(
-        `INSERT INTO ${q(cfg.table)} (${cols.map(q).join(",")}) VALUES (${Array(cols.length).fill("?").join(",")})`,
-        vals,
-      );
-
+      const res = await buildPOSTQuery(req, cfg);
       return POSTSuccessResponse(res.insertId);
     } catch (error: any) {
-      console.error(error);
+      console.error(error.message);
       return POSTErrorResponse();
     }
   };
@@ -46,105 +41,47 @@ export function createCrudHandlers(cfg: CrudConfig) {
 }
 
 export function createCrudHandlersById(cfg: CrudConfig) {
-  const idCol = cfg.id ?? "id";
-
-  const GET = async (_req: Request, { params }: IdPromise) => {
+  const GET = async (_: Request, { params }: IdPromise) => {
     const { id } = await params;
 
     try {
-      const { joins, selectPieces } = buildBelongsToJoins(cfg);
-      const baseSelect = [
-        ...cfg.selectable.map((c) => `${q(cfg.table)}.${q(c)}`),
-        ...selectPieces,
-      ].join(",");
-
-      const [rows] = await db.query(
-        `SELECT ${baseSelect}
-         FROM ${q(cfg.table)}
-         ${joins.join(" ")}
-         WHERE ${q(cfg.table)}.${q(idCol)} = ?`,
-        [id],
-      );
-      const row = Array.isArray(rows) ? (rows as any[])[0] : null;
-      if (!row) return new Response("Not found", { status: 404 });
-
-      // inline belongsTo -> nested
-      for (const r of cfg.relations ?? []) {
-        if (r.type !== "belongsTo") continue;
-        const nested: any = {};
-        for (const col of r.selectable) {
-          const key = `${r.alias}__${col}`;
-          nested[col] = row[key];
-          delete row[key];
-        }
-        row[r.alias] = nested;
-      }
-
-      // hasMany fetch
-      const hasMany = (cfg.relations ?? []).filter(
-        (r) => r.type === "hasMany",
-      ) as HasMany[];
-      for (const rel of hasMany) {
-        const [childRows] = await db.query(
-          `SELECT ${rel.selectable.map((c) => q(c)).join(",")}
-           FROM ${q(rel.table)}
-           WHERE ${q(rel.foreignKey)} = ?
-           ${rel.orderBy ? `ORDER BY ${q(rel.orderBy)} ${rel.orderDir?.toUpperCase() === "DESC" ? "DESC" : "ASC"}` : ""}`,
-          [id],
-        );
-        let arr = childRows as any[];
-        if (rel.limitPerParent && arr.length > rel.limitPerParent) {
-          arr = arr.slice(0, rel.limitPerParent);
-        }
-        row[rel.alias] = arr;
-      }
-
-      return Response.json({ data: row });
-    } catch (e: any) {
-      return new Response(e.message ?? "GET failed", { status: 400 });
+      const data = await buildGETReadQuery(+id, cfg);
+      return GETReadSuccessResponse(data);
+    } catch (error: any) {
+      console.error(error.message);
+      return GETReadErrorResponse();
     }
   };
 
-  const PATCH = async (_req: Request, { params }: IdPromise) => {
+  const PATCH = async (req: Request, { params }: IdPromise) => {
     const { id } = await params;
 
     try {
-      const payload = await _req.json();
-      const data: Record<string, any> = {};
-      for (const k of cfg.editable)
-        if (payload[k] !== undefined) data[k] = payload[k];
-      if (!Object.keys(data).length)
-        throw new Error("No editable fields provided.");
+      const success = await buildPATCHQuery(req, +id, cfg);
+      if (success) {
+        return GET(req, { params });
+      }
 
-      const sets = Object.keys(data)
-        .map((c) => `${q(c)} = ?`)
-        .join(", ");
-      const values = [...Object.values(data), id];
-
-      await db.query(
-        `UPDATE ${q(cfg.table)} SET ${sets} WHERE ${q(idCol)} = ?`,
-        values,
-      );
-      return GET(_req, { params }); // return fresh with relations
-    } catch (e: any) {
-      return new Response(e.message ?? "PATCH failed", { status: 400 });
+      return PATCHNotFoundResponse();
+    } catch (error: any) {
+      console.error(error.message);
+      return PATCHErrorResponse();
     }
   };
 
-  const DELETE = async (_req: Request, { params }: IdPromise) => {
+  const DELETE = async (_: Request, { params }: IdPromise) => {
     const { id } = await params;
 
     try {
-      const [res] = await db.query(
-        `DELETE FROM ${q(cfg.table)} WHERE ${q(idCol)} = ?`,
-        [id],
-      );
-      const affected = (res as any).affectedRows ?? 0;
-      return affected
-        ? new Response(null, { status: 204 })
-        : new Response("Not found", { status: 404 });
-    } catch (e: any) {
-      return new Response(e.message ?? "DELETE failed", { status: 400 });
+      const success = await buildDELETEQuery(+id, cfg);
+      if (success) {
+        return DELETESuccessResponse();
+      }
+
+      return DELETENotFoundResponse();
+    } catch (error: any) {
+      console.error(error.message);
+      return DELETEErrorResponse();
     }
   };
 
