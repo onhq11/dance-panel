@@ -1,5 +1,7 @@
 import { db } from "@lib/db";
-import { registrationType } from "@/assets/data/registrationType";
+import { registrationType } from "@/enums/registrationType";
+import { assignEditableValues, q } from "@lib/utils/_shared/common";
+import messages from "@lib/utils/_shared/messages";
 
 const soloData = [
   "age_group_id",
@@ -13,6 +15,49 @@ const soloData = [
 const formationData = ["coach", "formation", "dancers"];
 const inputData = ["type", ...soloData, ...formationData];
 
+export const POST = async (req: Request) => {
+  try {
+    const payload = await req.json();
+    const data: Record<string, any> = {};
+
+    assignEditableValues(inputData, payload, data);
+
+    if (!Object.values(registrationType).includes(data.type)) {
+      return Response.json(
+        { message: messages.NO_VALID_TYPE },
+        { status: 400 },
+      );
+    }
+
+    let result = false;
+
+    switch (data.type) {
+      case registrationType.solo:
+        result = !!(await insertSolo(data));
+        break;
+
+      case registrationType.formation:
+        result = !!(await insertFormation(data));
+        break;
+    }
+
+    if (result) {
+      return Response.json(
+        { message: messages.CREATE_SUCCESS },
+        { status: 201 },
+      );
+    }
+
+    return Response.json({ message: messages.CREATE_ERROR }, { status: 400 });
+  } catch (error: any) {
+    console.error(error.message);
+    return Response.json(
+      { message: messages.INTERNAL_SERVER_ERROR },
+      { status: 500 },
+    );
+  }
+};
+
 const insertSolo = async (data: any) => {
   const values = [
     data.age_group_id,
@@ -25,44 +70,14 @@ const insertSolo = async (data: any) => {
     data.phone,
   ];
 
-  const [res] = await db.query(
-    `INSERT INTO participant (age_group_id, first_name, last_name, nickname, year_of_birth, email, token, phone) VALUES (${Array(values.length).fill("?").join(",")})`,
+  const [res]: any = await db.query(
+    `INSERT INTO participant (${q("age_group_id")}, ${q("first_name")}, ${q("last_name")}, ${q("nickname")}, ${q("year_of_birth")}, ${q("email")}, ${q("token")}, ${q("phone")}) VALUES (${Array(values.length).fill("?").join(",")})`,
     values,
   );
 
-  console.log(res);
+  return res.affectedRows;
 };
 
-const insertFormation = async (data: any) => {};
-
-export const POST = async (req: Request) => {
-  try {
-    const payload = await req.json();
-    const data: Record<string, any> = {};
-
-    for (const k of inputData)
-      if (payload[k] !== undefined) data[k] = payload[k];
-
-    if (!Object.keys(data).length)
-      throw new Error("No editable fields provided.");
-
-    if (
-      data.type !== registrationType.solo &&
-      data.type !== registrationType.formation
-    ) {
-      throw new Error("No type provided.");
-    }
-
-    switch (data.type) {
-      case registrationType.solo:
-        await insertSolo(data);
-
-      case registrationType.formation:
-        await insertFormation(data);
-    }
-
-    return Response.json({}, { status: 201 });
-  } catch (e: any) {
-    return new Response(e.message ?? "POST failed", { status: 400 });
-  }
+const insertFormation = async () => {
+  return true;
 };

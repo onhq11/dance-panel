@@ -1,14 +1,22 @@
-import { CiGrid41, CiUser } from "react-icons/ci";
+import { CiCalendarDate, CiDumbbell, CiPizza, CiUser } from "react-icons/ci";
 import { protectedRoutes } from "@/config/routes/protectedRoutes";
 import { MenuEntry } from "@prettylab/core/types/MenuEntry";
 
 export const menu: Array<MenuEntry> = [
   {
     route: protectedRoutes.index,
-    icon: CiGrid41,
+    icon: CiUser,
   },
   {
-    route: protectedRoutes.users,
-    icon: CiUser,
+    route: protectedRoutes.age_group,
+    icon: CiCalendarDate,
+  },
+  {
+    route: protectedRoutes.competition,
+    icon: CiDumbbell,
+  },
+  {
+    route: protectedRoutes.coach,
+    icon: CiPizza,
   },
 ];

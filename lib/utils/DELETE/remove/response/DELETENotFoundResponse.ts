@@ -1,3 +1,5 @@
+import messages from "@lib/utils/_shared/messages";
+
 export const DELETENotFoundResponse = () => {
-  return Response.json({ message: "not_found" }, { status: 404 });
+  return Response.json({ message: messages.NOT_FOUND }, { status: 404 });
 };

@@ -12,7 +12,7 @@ export const buildPATCHQuery = async (
   const payload = await req.json();
   const data: Record<string, any> = {};
 
-  assignEditableValues(cfg, payload, data);
+  assignEditableValues(cfg.editable, payload, data);
 
   const { sets, values } = buildUpdateValues(data, id);
   const [res] = await db.query(

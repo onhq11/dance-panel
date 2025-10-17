@@ -6,7 +6,7 @@ export const buildPOSTQuery = async (req: Request, cfg: CrudConfig) => {
   const payload = await req.json();
   const data: Record<string, any> = {};
 
-  assignEditableValues(cfg, payload, data);
+  assignEditableValues(cfg.editable, payload, data);
 
   const cols = Object.keys(data);
   const vals = Object.values(data);

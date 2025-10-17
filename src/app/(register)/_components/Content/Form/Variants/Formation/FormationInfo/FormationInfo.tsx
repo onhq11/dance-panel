@@ -1,11 +1,14 @@
 import Flex from "@prettylab/core/components/layout/Flex/Flex";
-import { ageGroups } from "@/assets/data/ageGroup";
 import InputRadioGroup from "@/components/Form/InputRadioGroup";
 import InputText from "@/components/Form/InputText";
 import Field from "@/app/(register)/_components/Content/Form/Field";
 import { Divider, Typography } from "@mui/material";
 
-export default function FormationInfo() {
+interface Props {
+  formationGroups: Array<any>;
+}
+
+export default function FormationInfo({ formationGroups }: Props) {
   return (
     <Flex column sx={{ gap: 2 }}>
       <Typography variant="h6">Formacja</Typography>
@@ -13,10 +16,10 @@ export default function FormationInfo() {
       <InputRadioGroup
         name={"formation.age_group_id"}
         label="Kategoria wiekowa"
-        options={ageGroups.map((row: any) => ({
+        options={formationGroups.map((row: any) => ({
           label: row.name,
           value: row.id,
-          available_slots: row.available_slots,
+          available_seats: row.available_seats || 0,
         }))}
         required
       />

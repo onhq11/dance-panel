@@ -5,7 +5,6 @@ import InputYear from "@/components/Form/InputYear";
 import { PiTrash } from "react-icons/pi";
 import InputSwitch from "@/components/Form/InputSwitch";
 import { useFormContext } from "react-hook-form";
-import { ageGroups } from "@/assets/data/ageGroup";
 import InputRadioGroup from "@/components/Form/InputRadioGroup";
 import Button from "@prettylab/core/components/layout/Button/Button";
 import Icon from "@prettylab/core/components/layout/Icon/Icon";
@@ -15,9 +14,10 @@ import { Typography } from "@mui/material";
 interface Props {
   index: number;
   handleRemove: (index: number) => void;
+  soloGroups: Array<any>;
 }
 
-export default function Item({ index, handleRemove }: Props) {
+export default function Item({ index, handleRemove, soloGroups }: Props) {
   const { watch } = useFormContext();
   const isSolo = watch(`dancers[${index}].is_solo`);
 
@@ -85,10 +85,10 @@ export default function Item({ index, handleRemove }: Props) {
           <InputRadioGroup
             name={`dancers[${index}].age_group_id`}
             label="Kategoria wiekowa"
-            options={ageGroups.map((row: any) => ({
+            options={soloGroups.map((row: any) => ({
               label: row.name,
               value: row.id,
-              available_slots: row.available_slots,
+              available_seats: row.available_seats || 0,
             }))}
             required
           />

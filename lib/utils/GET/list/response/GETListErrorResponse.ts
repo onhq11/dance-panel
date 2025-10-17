@@ -1,3 +1,8 @@
+import messages from "@lib/utils/_shared/messages";
+
 export const GETListErrorResponse = () => {
-  return Response.json({ message: "internal_server_error" }, { status: 500 });
+  return Response.json(
+    { message: messages.INTERNAL_SERVER_ERROR },
+    { status: 500 },
+  );
 };

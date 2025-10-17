@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { registrationType } from "@/assets/data/registrationType";
+import { registrationType } from "@/enums/registrationType";
 import Flex from "@prettylab/core/components/layout/Flex/Flex";
 import Button from "@prettylab/core/components/layout/Button/Button";
 import SlideIn from "@prettylab/core/components/animation/SlideIn/SlideIn";
@@ -42,8 +42,8 @@ export default function ResultPage({ type, handleReset }: Props) {
         </Flex>
         <Flex column sx={{ gap: 2, mt: 8 }}>
           <Typography sx={{ fontSize: { xs: 14, md: 16 } }}>
-            A może chcesz zarejestrować jeszcze kogoś? Nie ma problemu, wróć do
-            formularza i wypełnij go ponownie!
+            A może chcesz zarejestrować jeszcze kogoś? Wróć do formularza i
+            zarejestruj następną osobę!
           </Typography>
           <Button
             variant="outlined"

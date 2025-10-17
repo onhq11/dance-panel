@@ -9,7 +9,7 @@ export default function Promo() {
         src={promo.src}
         alt={"Promo card"}
         sx={{
-          height: { xs: "200px", sm: "400px", xl: "100%" },
+          height: { xs: "200px", sm: "300px", xl: "100%" },
           objectFit: { xs: "cover", "1900": "contain" },
           borderTopLeftRadius: { xs: 0, lg: "24px" },
           borderBottomLeftRadius: { xs: 0, xl: "24px" },

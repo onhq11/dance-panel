@@ -6,7 +6,11 @@ import { MdPerson } from "react-icons/md";
 import Item from "@/app/(register)/_components/Content/Form/Variants/Formation/Dancers/Item";
 import { Fragment, useEffect } from "react";
 
-export default function Dancers() {
+interface Props {
+  soloGroups: Array<any>;
+}
+
+export default function Dancers({ soloGroups }: Props) {
   const { control } = useFormContext();
 
   const { fields, append, remove, replace } = useFieldArray({
@@ -27,7 +31,12 @@ export default function Dancers() {
           {index > 0 && (
             <Divider flexItem orientation="horizontal" sx={{ my: 2 }} />
           )}
-          <Item key={row.id} index={index} handleRemove={remove} />
+          <Item
+            key={row.id}
+            index={index}
+            handleRemove={remove}
+            soloGroups={soloGroups}
+          />
         </Fragment>
       ))}
       {fields.length > 0 && (

@@ -1,4 +1,4 @@
 import { createCrudHandlersById } from "@lib/crud/crud";
-import { formationTable } from "@/app/api/formation/route";
+import { formationTable } from "@/app/api/admin/formation/route";
 
 export const { GET, PATCH, DELETE } = createCrudHandlersById(formationTable);

@@ -6,7 +6,7 @@ import InputSelect from "@/components/Form/InputSelect";
 import {
   matchRegistrationTypeName,
   registrationType,
-} from "@/assets/data/registrationType";
+} from "@/enums/registrationType";
 import Field from "@/app/(register)/_components/Content/Form/Field";
 import VariantResolver from "@/app/(register)/_components/Content/Form/Variants/VariantResolver";
 import { useState } from "react";
@@ -18,10 +18,11 @@ import { create } from "@prettylab/core/utils/api/crud";
 import dayjs from "dayjs";
 
 interface Props {
-  ageGroupData: any;
+  soloGroups: Array<any>;
+  formationGroups: Array<any>;
 }
 
-export default function Form({ ageGroupData }: Props) {
+export default function Form({ soloGroups, formationGroups }: Props) {
   const form = useForm();
   const { enqueueSnackbar } = useSnackbar();
   const [loading, setLoading] = useState(false);
@@ -41,7 +42,7 @@ export default function Form({ ageGroupData }: Props) {
       return;
     }
 
-    // setLoading(true);
+    setLoading(true);
 
     const preparedData = {
       type: data.type,
@@ -60,8 +61,8 @@ export default function Form({ ageGroupData }: Props) {
     );
     console.log(response);
 
-    // setLoading(false);
-    // setResultPage(true);
+    setLoading(false);
+    setResultPage(true);
   };
 
   const handleReset = () => {
@@ -88,7 +89,11 @@ export default function Form({ ageGroupData }: Props) {
                 }))}
               />
             </Field>
-            <VariantResolver type={type} ageGroupData={ageGroupData} />
+            <VariantResolver
+              type={type}
+              soloGroups={soloGroups}
+              formationGroups={formationGroups}
+            />
             {!!type && (
               <Button
                 loading={loading}

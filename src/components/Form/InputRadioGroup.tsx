@@ -64,8 +64,8 @@ export default function InputRadioGroup({
                 label=""
                 control={
                   <Radio
-                    sx={{ p: 0, opacity: item.available_slots <= 0 ? 0.5 : 1 }}
-                    disabled={item.available_slots <= 0}
+                    sx={{ p: 0, opacity: item.available_seats <= 0 ? 0.5 : 1 }}
+                    disabled={item.available_seats <= 0}
                     icon={
                       <Paper
                         sx={{
@@ -84,7 +84,7 @@ export default function InputRadioGroup({
                         >
                           {item.label}
                           <br />
-                          <span>Wolne miejsca: {item.available_slots}</span>
+                          <span>Wolne miejsca: {item.available_seats}</span>
                         </Typography>
                       </Paper>
                     }
@@ -106,7 +106,7 @@ export default function InputRadioGroup({
                         >
                           {item.label}
                           <br />
-                          <span>Wolne miejsca: {item.available_slots}</span>
+                          <span>Wolne miejsca: {item.available_seats}</span>
                         </Typography>
                       </Paper>
                     }

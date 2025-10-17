@@ -1,5 +1,5 @@
 import { CrudConfig, FiltersConfig, MetaData } from "@lib/utils/_shared/types";
-import { q } from "@lib/utils/_shared/common";
+import { getData, q } from "@lib/utils/_shared/common";
 import {
   buildBelongsToJoins,
   processBelongsToRelation,
@@ -210,8 +210,4 @@ export const addPage = (
 
 const getCount = (countRows: any) => {
   return Array.isArray(countRows) ? (countRows?.[0]?.total ?? 0) : 0;
-};
-
-const getData = (rows: any) => {
-  return Array.isArray(rows) ? rows : [];
 };

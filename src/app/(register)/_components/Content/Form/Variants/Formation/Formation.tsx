@@ -3,12 +3,17 @@ import Coach from "@/app/(register)/_components/Content/Form/Variants/Formation/
 import FormationInfo from "@/app/(register)/_components/Content/Form/Variants/Formation/FormationInfo/FormationInfo";
 import Dancers from "@/app/(register)/_components/Content/Form/Variants/Formation/Dancers/Dancers";
 
-export default function Formation() {
+interface Props {
+  soloGroups: Array<any>;
+  formationGroups: Array<any>;
+}
+
+export default function Formation({ soloGroups, formationGroups }: Props) {
   return (
     <Flex column sx={{ gap: 10, mt: 5 }}>
       <Coach />
-      <FormationInfo />
-      <Dancers />
+      <FormationInfo formationGroups={formationGroups} />
+      <Dancers soloGroups={soloGroups} />
     </Flex>
   );
 }

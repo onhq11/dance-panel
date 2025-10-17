@@ -1,13 +1,11 @@
-import { CrudConfig } from "@lib/utils/_shared/types";
-
 export const q = (x: string) => `\`${x}\``;
 
 export const assignEditableValues = (
-  cfg: CrudConfig,
+  editable: readonly string[],
   payload: any,
   data: any,
 ) => {
-  for (const k of cfg.editable) {
+  for (const k of editable) {
     if (payload[k] !== undefined) {
       data[k] = payload[k];
     }
@@ -16,4 +14,8 @@ export const assignEditableValues = (
   if (!Object.keys(data).length) {
     throw new Error("No editable fields provided.");
   }
+};
+
+export const getData = (rows: any) => {
+  return Array.isArray(rows) ? rows : [];
 };

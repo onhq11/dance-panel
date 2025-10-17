@@ -4,7 +4,12 @@ import Form from "@/app/(register)/_components/Content/Form/Form";
 import { list } from "@prettylab/core/utils/api/crud";
 
 export default async function Content() {
-  const { data } = await list("http://localhost:4000/api/age-group");
+  const { data: soloGroups } = await list(
+    "http://localhost:4000/api/age-group/solo",
+  );
+  const { data: formationGroups } = await list(
+    "http://localhost:4000/api/age-group/formation",
+  );
 
   return (
     <Flex
@@ -14,8 +19,8 @@ export default async function Content() {
         borderTopRightRadius: { xs: 0, xl: "24px" },
         borderBottomRightRadius: { xs: 0, lg: "24px" },
         flex: 1,
-        py: { xs: 4, md: 8 },
-        px: { xs: 4, md: 12 },
+        py: { xs: 4, md: 6, xl: 8 },
+        px: { xs: 4, md: 6, xl: 12 },
         overflowY: { xs: "none", xl: "auto" },
         minWidth: { xs: "auto", md: 500, lg: 600 },
       }}
@@ -29,7 +34,7 @@ export default async function Content() {
       >
         Rejestracja
       </Typography>
-      <Form ageGroupData={data} />
+      <Form soloGroups={soloGroups} formationGroups={formationGroups} />
     </Flex>
   );
 }

@@ -11,7 +11,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { list, remove } from "@prettylab/core/utils/api/crud";
-import CreateModal from "@/app/(management)/administracja/CreateModal";
+import CreateModal from "@/app/(management)/zawody/CreateModal";
 import { useEffect, useState } from "react";
 import { PiTrash } from "react-icons/pi";
 import { useSnackbar } from "notistack";
@@ -23,7 +23,7 @@ export default function Page() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await list("http://localhost:4000/api/user");
+      const res = await list("http://localhost:4000/api/competition");
       return res.data;
     };
 
@@ -40,9 +40,10 @@ export default function Page() {
           <TableHead>
             <TableRow>
               <TableCell>ID</TableCell>
-              <TableCell>Imię</TableCell>
-              <TableCell>Nazwisko</TableCell>
-              <TableCell>E-Mail</TableCell>
+              <TableCell>Nazwa</TableCell>
+              <TableCell>Zaczynają się dnia</TableCell>
+              <TableCell>Aktywne</TableCell>
+              <TableCell>Rejestracja otwarta</TableCell>
               <TableCell align="right">Akcje</TableCell>
             </TableRow>
           </TableHead>
@@ -50,14 +51,20 @@ export default function Page() {
             {data.map((row: any, index: number) => (
               <TableRow key={index}>
                 <TableCell>{row.id}</TableCell>
-                <TableCell>{row.first_name}</TableCell>
-                <TableCell>{row.last_name}</TableCell>
-                <TableCell>{row.email}</TableCell>
+                <TableCell>{row.name}</TableCell>
+                <TableCell>{row.starts_at}</TableCell>
+                <TableCell>{row.is_active ? "Tak" : "Nie"}</TableCell>
+                <TableCell>
+                  {row.is_registration_open ? "Tak" : "Nie"}
+                </TableCell>
                 <TableCell align="right">
                   <IconButton
                     color="error"
                     onClick={async () => {
-                      await remove("http://localhost:4000/api/user", row.id);
+                      await remove(
+                        "http://localhost:4000/api/competition",
+                        row.id,
+                      );
                       enqueueSnackbar("Pomyślnie usunięto", {
                         variant: "info",
                       });
