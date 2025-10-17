@@ -37,7 +37,7 @@ export const POST = async (req: Request) => {
         break;
 
       case registrationType.formation:
-        result = !!(await insertFormation(data));
+        result = !!(await insertFormation());
         break;
     }
 
